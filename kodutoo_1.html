@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="kodutoo_1.js"></script>
+  <title>Kell</title>
+  
+  <style type="text/css">
+  html{
+		width:100%;
+		height:100%;
+  }
+  body{
+		width: 100%;
+		height: 100%;
+		background: url("water-1330252_960_720.jpg");
+		background-size: 100%;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.clock{
+		background-color: #fff;
+		opacity: 0.8;
+		position: absolute;
+		border-collapse: collapse;
+		top: 50%;
+		left: 50%;
+		width: 75%;
+		height: 20%;
+		transform: translateX(-50%) translateY(-50%);
+		color: #000;
+		text-align: center;
+		font-family: "Lucida Console", Monaco, monospace;
+		font-size: 1200%;
+		padding: 0.3%;
+		border-style: solid;
+		border-width: 0.3%;
+	}
+	.date{
+		position: absolute;
+		text-align: center;
+		top: 30%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		color: #000;
+		text-align: center;
+		font-family: "Lucida Console", Monaco, monospace;
+		font-size:600%;
+		padding: 0.3%;
+		border-collapse: collapse;
+	}
+	.button_style{
+		box-shadow: 0 15px 32px 0 rgba(0,0,0,0.2), 0 15px 32px 0 rgba(0,0,0,0.19);
+		background-color: #000;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 4vw;
+	}
+	.button{
+		margin: auto;
+		width: 50%;
+		padding: 10px;
+		text-align: center;
+	}
+  </style>
+</head>
+<body>
+  <div id="MyClockDisplay" class="clock"></div>
+  <div id="demo" class="date"></div>
+  <div class="button"><button id="b1" onclick="randomize()" class="button_style">Maailm muutub</button></div>
+  <script type="text/javascript">
+	function showTime(){
+		var date = new Date();
+		
+		var h = date.getHours();
+		var m = date.getMinutes();
+		var s = date.getSeconds();
+		
+		if(h < 10){
+			h= "0" + h;}
+		if(m < 10){
+			m= "0" + m;}
+		if(s < 10){
+			s= "0" + s;}
+	
+		var time = h + ":" + m + ":" + s;
+
+		document.getElementById("MyClockDisplay").innerHTML = time;
+		//document.getElementById("MyClockDisplay").textContetnt = time;
+		
+		setTimeout(showTime, 1000);
+	}
+	
+	function showDate(){
+		var date = new Date();
+		var weekday = new Array(7);
+		weekday[0] = "PÜHAPÄEV";
+		weekday[1] = "ESMASPÄEV";
+		weekday[2] = "TEISIPÄEV";
+		weekday[3] = "KOLMAPÄEV";
+		weekday[4] = "NELJAPÄEV";
+		weekday[5] = "REEDE";
+		weekday[6] = "LAUPÄEV";
+		
+
+		var weekday = weekday[date.getDay()];
+		
+		var day = date.getDate();
+		var month = date.getMonth() + 1;
+		var year = date.getFullYear();
+		
+		if(day < 10){
+			day= "0" + day;}
+		if(month < 10){
+			month= "0" + month;}
+			
+
+		var dateTime = weekday + " " + day + ":" + month + ":" + year;
+		
+		document.getElementById("demo").innerHTML = dateTime;
+	}
+	
+
+	function randomize() {
+	  document.getElementById('MyClockDisplay').style.color = randomColors();
+	}
+
+
+
+
+	function randomColors() {
+	  return '#' + Math.floor(Math.random() * 16777215).toString(16);
+	}
+	
+	showTime();
+	showDate();
+  </script>
+</body>
+</html>
