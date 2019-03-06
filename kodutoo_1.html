@@ -4,42 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <div class="button_DN"><button id="b3" onclick="myFunctionD()" class="B_DayNight">☀️</button>
+  <button id="b2" onclick="myFunctionN()" class="B_DayNight">🌑</button></div>
   <script src="kodutoo_1.js"></script>
   <title>Kell</title>
+  <p>Karolin Kriiska https://github.com/kkriiska/eesrakendused</p>
   
   <style type="text/css">
-  html{
-		width:100%;
-		height:100%;
-  }
+
   body{
 		width: 100%;
 		height: 100%;
-		background: url("water-1330252_960_720.jpg");
+		background-color: whitesmoke;
 		background-size: 100%;
 		width: 100%;
 		height: 100%;
 	}
 	
 	.clock{
+		margin: auto;
 		background-color: #fff;
 		opacity: 0.8;
 		position: absolute;
 		border-collapse: collapse;
 		top: 50%;
 		left: 50%;
-		width: 75%;
-		height: 20%;
 		transform: translateX(-50%) translateY(-50%);
 		color: #000;
 		text-align: center;
 		font-family: "Lucida Console", Monaco, monospace;
-		font-size: 1200%;
+		font-size: 7vw;
 		padding: 0.3%;
 		border-style: solid;
 		border-width: 0.3%;
 	}
+	
 	.date{
+		margin: auto;
 		position: absolute;
 		text-align: center;
 		top: 30%;
@@ -48,33 +49,66 @@
 		color: #000;
 		text-align: center;
 		font-family: "Lucida Console", Monaco, monospace;
-		font-size:600%;
+		font-size:4vw;
 		padding: 0.3%;
 		border-collapse: collapse;
 	}
-	.button_style{
-		box-shadow: 0 15px 32px 0 rgba(0,0,0,0.2), 0 15px 32px 0 rgba(0,0,0,0.19);
-		background-color: #000;
-		border: none;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 4vw;
-	}
-	.button{
+	
+	.button_C{
 		margin: auto;
-		width: 50%;
+		width: 30%;
 		padding: 10px;
+		align: center;
 		text-align: center;
 	}
+
+	.button_DN{
+		margin: auto;
+		width: 30%;
+		padding: 10px;
+		align: center;
+		text-align: center;
+	}
+	
+	.B_DayNight{
+		background-color: black;
+		color: white;
+		border: none;
+		text-align: center;
+		padding: 15px 32px;
+		display: inline-block;
+		font-size: 2vw;
+		cursor: pointer;
+	}
+	
+	.B_Change{
+		background-color: white;
+		color: black;
+		border: none;
+		text-align: center;
+		padding: 15px 32px;
+		display: inline-block;
+		font-size: 3vw;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
+	
+	audio{
+		display: none;
+	}
+	
+	
   </style>
 </head>
 <body>
+  <div class="button_C"><button id="b1" onclick="randomize()" class="B_Change">❤️🧡💛💚💙💜</button></div>
   <div id="MyClockDisplay" class="clock"></div>
   <div id="demo" class="date"></div>
-  <div class="button"><button id="b1" onclick="randomize()" class="button_style">Maailm muutub</button></div>
+  <div id="player">
+	 <audio controls autoplay hidden>
+	   <source src="kits.mp3" type="audio/mpeg"/>
+	 </audio>
+   </div>
   <script type="text/javascript">
 	function showTime(){
 		var date = new Date();
@@ -93,7 +127,7 @@
 		var time = h + ":" + m + ":" + s;
 
 		document.getElementById("MyClockDisplay").innerHTML = time;
-		//document.getElementById("MyClockDisplay").textContetnt = time;
+
 		
 		setTimeout(showTime, 1000);
 	}
@@ -132,11 +166,16 @@
 	  document.getElementById('MyClockDisplay').style.color = randomColors();
 	}
 
-
-
-
 	function randomColors() {
 	  return '#' + Math.floor(Math.random() * 16777215).toString(16);
+	}
+	
+	function myFunctionN(){
+		document.body.style.backgroundColor = "midnightblue";
+	}
+	
+	function myFunctionD(){
+		document.body.style.backgroundColor = "whitesmoke";
 	}
 	
 	showTime();
